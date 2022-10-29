@@ -1,27 +1,36 @@
 <!doctype html>
-<html ng-app="myApp">
+<html ng-app='myApp'>
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="css/mystyles.css"/>
 </head>
 <body>
-<div ng-controller="phoneController">
-
-    <div ng-style="somestyle">Директива ng-style</div>
-    <div ng-class="someclass">Директива ng-class</div>
-
-<!--    <p ng-show="data.visible">Первый блок</p>-->
-<!--    <p ng-hide="data.visible">Второй блок</p>-->
-<!--    <input type="checkbox" ng-model="data.visible">Открыть/скрыть-->
-
-    <input type="checkbox" ng-model="data.visible">Открыть/скрыть
-    <p ng-if="data.visible">Первый блок</p>
-    <p ng-if="!data.visible">Второй блок</p>
-
+<div ng-controller="QuestionController">
+    <div class="quest" ng-class="questColorClass"
+         ng-mouseenter="changeClass($event)"
+         ng-mouseleave="changeClass($event)">
+        <h3>{{question.text}}</h3>
+        <p>{{question.author}} </p>
+        <p><i>{{question.date}}</i></p>
+    </div>
+    <h3>Ответы</h3>
+    <div class="answers">
+        <div ng-repeat="answer in question.answers" class="answer">
+            <div class="vote">
+                <a class="vote-up" ng-click="voteUp(answer)"></a>
+                <span class="rate">{{answer.rate}}</span>
+                <a class="vote-down" ng-click="voteDown(answer)"></a>
+            </div>
+            <b>{{answer.text}}</b>
+            <p>{{answer.author}}</p>
+            <p><i>{{answer.date}}</i></p>
+        </div>
+    </div>
 </div>
 <script src="js/lib/angular.min.js"></script>
 <script type="text/javascript">
     var myApp = angular.module('myApp', []);
 </script>
-<script src="js/controllers/phonesController.js"></script>
+<script src="js/controllers/QuestionController.js"></script>
 </body>
 </html>
