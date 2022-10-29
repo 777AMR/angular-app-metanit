@@ -2,23 +2,32 @@
 <html ng-app="myApp">
 <head>
     <meta charset="utf-8">
+    <style>
+        .odd {
+            background-color: #fafafa;
+        }
+
+        .even {
+            background-color: silver
+        }
+    </style>
 </head>
 <body>
-<h2>{{ message }}</h2>
-<div ng-controller="myController">
-    <h3>{{ message }}</h3>
+<div ng-controller="phoneController">
+    <ul>
+        <li ng-repeat="company in phones">
+            <p>{{company.name}}</p>
+            <ul ng-repeat="model in company.models">
+                <b>{{model.name}}</b>
+                <p>Цена: {{model.price}} $</p>
+            </ul>
+        </li>
+    </ul>
 </div>
-<h4>{{ message }}</h4>
 <script src="js/lib/angular.min.js"></script>
 <script type="text/javascript">
-    var myApp = angular.module('myApp', [])
-        .run(function ($rootScope) {
-
-            $rootScope.message = "Модуль myApp";
-        });
-    myApp.controller('myController', function ($scope) {
-        $scope.message = "Контроллер myController";
-    });
+    angular.module('myApp', []);
 </script>
+<script src="js/controllers/phonesController.js"></script>
 </body>
 </html>
