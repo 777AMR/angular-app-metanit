@@ -13,17 +13,26 @@
     </style>
 </head>
 <body>
+
 <div ng-controller="phoneController">
-    <ul>
-        <li ng-repeat="company in phones">
-            <p>{{company.name}}</p>
-            <ul ng-repeat="model in company.models">
-                <b>{{model.name}}</b>
-                <p>Цена: {{model.price}} $</p>
-            </ul>
-        </li>
-    </ul>
+    <!--    ng-bind-->
+    <p>Количество элементов: <span ng-bind="phones.length"></span></p>
+    <p>Первый элемент: <span ng-bind="phones[0].name"></span></p>
+
+    <!--    ng-model-->
+    <input type="text" ng-model="phones[0].name"/>
+    <p ng-bind="phones[0].name"></p>
+
+    <!--    ng-bind-template-->
+    <p ng-bind-template="{{phones[0].name}}: {{phones[0].price}} $"></p>
+
+    <!--    ng-non-bindable-->
+    <p>{{1 + 2}}</p>
+    <p ng-non-bindable>{{1 + 2}}</p>
+
+
 </div>
+
 <script src="js/lib/angular.min.js"></script>
 <script type="text/javascript">
     angular.module('myApp', []);
