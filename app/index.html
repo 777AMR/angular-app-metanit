@@ -2,41 +2,20 @@
 <html ng-app="myApp">
 <head>
     <meta charset="utf-8">
-    <style>
-        .odd {
-            background-color: #fafafa;
-        }
-
-        .even {
-            background-color: silver
-        }
-    </style>
 </head>
 <body>
-
-<div ng-controller="phoneController">
-    <!--    ng-bind-->
-    <p>Количество элементов: <span ng-bind="phones.length"></span></p>
-    <p>Первый элемент: <span ng-bind="phones[0].name"></span></p>
-
-    <!--    ng-model-->
-    <input type="text" ng-model="phones[0].name"/>
-    <p ng-bind="phones[0].name"></p>
-
-    <!--    ng-bind-template-->
-    <p ng-bind-template="{{phones[0].name}}: {{phones[0].price}} $"></p>
-
-    <!--    ng-non-bindable-->
-    <p>{{1 + 2}}</p>
-    <p ng-non-bindable>{{1 + 2}}</p>
-
-
+<div ng-controller="helloController">
+    <p><textarea ng-model="htmlcode"></textarea></p>
+    <p ng-bind-html="htmlcode"></p>
 </div>
-
 <script src="js/lib/angular.min.js"></script>
+<script src="js/lib/angular-sanitize.min.js"></script>
 <script type="text/javascript">
-    angular.module('myApp', []);
+    var myApp = angular.module('myApp', ["ngSanitize"]);
+    myApp.controller('helloController', function ($scope) {
+
+        $scope.htmlcode = "Директива <b>ng-bind-html</b>";
+    });
 </script>
-<script src="js/controllers/phonesController.js"></script>
 </body>
 </html>
