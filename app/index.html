@@ -5,35 +5,18 @@
 </head>
 <body>
 <div ng-controller="phoneController">
-    <div ng-repeat="button in modes">
-        <label>
-            <input type="radio" ng-model="data.mode" value="{{button.value}}" name="modes"/>
-            {{button.label}}
-        </label>
-    </div>
-    <div ng-switch on="data.mode">
-        <div ng-switch-when="Tablets">
-            <ul>
-                <li ng-repeat="tablet in tablets">
-                    <b>{{tablet.name}}</b>
-                    <p>Цена: {{tablet.price}} $</p>
-                    <p>Производитель: {{tablet.company}}</p>
-                </li>
-            </ul>
-        </div>
-        <div ng-switch-when="Phones">
-            <ul>
-                <li ng-repeat="phone in phones">
-                    <b>{{phone.name}}</b>
-                    <p>Цена: {{phone.price}} $</p>
-                    <p>Производитель: {{phone.company}}</p>
-                </li>
-            </ul>
-        </div>
-        <div ng-switch-default>
-            Выберите товары для просмотра
-        </div>
-    </div>
+
+    <div ng-style="somestyle">Директива ng-style</div>
+    <div ng-class="someclass">Директива ng-class</div>
+
+<!--    <p ng-show="data.visible">Первый блок</p>-->
+<!--    <p ng-hide="data.visible">Второй блок</p>-->
+<!--    <input type="checkbox" ng-model="data.visible">Открыть/скрыть-->
+
+    <input type="checkbox" ng-model="data.visible">Открыть/скрыть
+    <p ng-if="data.visible">Первый блок</p>
+    <p ng-if="!data.visible">Второй блок</p>
+
 </div>
 <script src="js/lib/angular.min.js"></script>
 <script type="text/javascript">
