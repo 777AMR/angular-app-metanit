@@ -2,7 +2,6 @@
 <html ng-app="myApp">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/mystyles.css"/>
 </head>
 <body>
 <div ng-controller="phoneController">
@@ -12,7 +11,29 @@
             {{button.label}}
         </label>
     </div>
-    <div ng-include="setFile()"></div>
+    <div ng-switch on="data.mode">
+        <div ng-switch-when="Tablets">
+            <ul>
+                <li ng-repeat="tablet in tablets">
+                    <b>{{tablet.name}}</b>
+                    <p>Цена: {{tablet.price}} $</p>
+                    <p>Производитель: {{tablet.company}}</p>
+                </li>
+            </ul>
+        </div>
+        <div ng-switch-when="Phones">
+            <ul>
+                <li ng-repeat="phone in phones">
+                    <b>{{phone.name}}</b>
+                    <p>Цена: {{phone.price}} $</p>
+                    <p>Производитель: {{phone.company}}</p>
+                </li>
+            </ul>
+        </div>
+        <div ng-switch-default>
+            Выберите товары для просмотра
+        </div>
+    </div>
 </div>
 <script src="js/lib/angular.min.js"></script>
 <script type="text/javascript">
