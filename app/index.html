@@ -4,19 +4,21 @@
     <meta charset="utf-8">
 </head>
 <body>
-<div ng-controller="phoneController">
-    <p>Название: {{phone.name}}</p>
-    <p>Цена: {{phone.price}} $</p>
-    <p>Производитель: {{phone.company.name}}</p>
+<h2>{{ message }}</h2>
+<div ng-controller="myController">
+    <h3>{{ message }}</h3>
 </div>
-<hr>
-<div ng-controller="phoneController">
-    <p>Производитель: {{phone.company.country}}</p>
-</div>
+<h4>{{ message }}</h4>
 <script src="js/lib/angular.min.js"></script>
 <script type="text/javascript">
-    angular.module('myApp', []);
+    var myApp = angular.module('myApp', [])
+        .run(function ($rootScope) {
+
+            $rootScope.message = "Модуль myApp";
+        });
+    myApp.controller('myController', function ($scope) {
+        $scope.message = "Контроллер myController";
+    });
 </script>
-<script src="js/controllers/phonesController.js"></script>
 </body>
 </html>
