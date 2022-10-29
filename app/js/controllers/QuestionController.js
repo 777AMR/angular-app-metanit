@@ -1,6 +1,7 @@
 var myApp = angular.module('myApp');
 myApp.controller('QuestionController', function ($scope) {
 
+    $scope.sortparam = 'rate';
     $scope.question = {
         text: 'Какой js-фреймворк лучше использовать?',
         author: 'Иван Иванов',
@@ -23,16 +24,10 @@ myApp.controller('QuestionController', function ($scope) {
                 rate: 0
             }]
     };
-
     $scope.voteUp = function (answer) {
         answer.rate++;
     };
     $scope.voteDown = function (answer) {
         answer.rate--;
     };
-    $scope.questColorClass = "questcolor";
-    $scope.changeClass = function (e) {
-
-        $scope.questColorClass = e.type == "mouseover" ? "questselectedcolor" : "questcolor";
-    }
 });
